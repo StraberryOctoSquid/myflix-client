@@ -9,9 +9,9 @@ export const MainView = () => {
       description: "Brian is a 16 year-old who can't play basketball, but he still wants to play like his hero, Kevin Durant. At an Oklahoma City Thunder game, Brian gets chosen to shoot a half court shot which he misses and hits the mascot in the process. Later on, he gets a chance to meet Durant and expresses his desire to play just like him. When Kevin gives Brian the ball, the two unknowingly switch talents.",
       genre: "Comedy",
       title: "Thunderstruck",
-      image: "#",
+      image: "https://en.wikipedia.org/wiki/File:Thunderstruck2012Poster.jpg",
       director: "John Whitesell",
-      featured: false,
+      featured: true,
     },
     {
       id: 2,
