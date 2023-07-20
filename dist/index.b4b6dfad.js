@@ -27377,6 +27377,7 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$67b2.prelude(module);
 
 try {
+// import PropTypes from "prop-types";
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
@@ -27389,10 +27390,21 @@ const MovieCard = ({ movie, onMovieClick })=>{
         children: movie.title
     }, void 0, false, {
         fileName: "src/components/movie-card/movie-card.jsx",
-        lineNumber: 3,
+        lineNumber: 5,
         columnNumber: 5
     }, undefined);
-};
+}; // MovieCard.propTypes = {
+ //   movie: PropTypes.shape({
+ //     actors: PropTypes.array.isRequired,
+ //     description: PropTypes.string.isRequired,
+ //     director: PropTypes.object,
+ //     featured: PropTypes.boolean,
+ //     genre: PropTypes.object,
+ //     imagePath: PropTypes.string,
+ //     id: PropTypes.integer,
+ //   }).isRequired,
+ //   onBookClick: PropTypes.func.isRequired
+ // };
 _c = MovieCard;
 var _c;
 $RefreshReg$(_c, "MovieCard");
