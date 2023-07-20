@@ -1,4 +1,4 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (
@@ -12,15 +12,15 @@ export const MovieCard = ({ movie, onMovieClick }) => {
   );
 };
 
-// MovieCard.propTypes = {
-//   movie: PropTypes.shape({
-//     actors: PropTypes.array.isRequired,
-//     description: PropTypes.string.isRequired,
-//     director: PropTypes.object,
-//     featured: PropTypes.boolean,
-//     genre: PropTypes.object,
-//     imagePath: PropTypes.string,
-//     id: PropTypes.integer,
-//   }).isRequired,
-//   onBookClick: PropTypes.func.isRequired
-// };
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    Actors: PropTypes.array.isRequired,
+    Description: PropTypes.string.isRequired,
+    Director: PropTypes.object,
+    Featured: PropTypes.string,
+    Genre: PropTypes.object,
+    ImagePath: PropTypes.string,
+    id: PropTypes.string,
+  }).isRequired,
+  onBookClick: PropTypes.func.isRequired
+};

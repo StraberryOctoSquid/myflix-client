@@ -12,18 +12,29 @@ export const MainView = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("moviesFromApi", data);
-        //   const moviesFromApi = data.docs.map((doc) => {
-        //     return {
-        //       id: doc.key,
-        //       title: doc.title,
-        //       image: `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`,
-        //       author: doc.author_name?.[0]
-        //     };
-        //   });
+        const moviesFromApi = data.map((movie) => {
+          return {
+            _id: movie._id,
+            Title: movie.Title,
+            ImagePath: movie.ImagePath,
+            Description: movie.Description,
+            Actors: movie.Actors,
+            Genre: {
+              Name: movie.Genre.Name,
+              Description: movie.Genre.Description,
+            },
+            Director: {
+              Name: movie.Director.Name,
+              Bio: movie.Director.Bio,
+            },
+          };
+        });
 
-        //   setMovies(moviesFromApi);
+        setMovies(moviesFromApi);
       });
   }, []);
+
+
   if (selectedMovie) {
     return (
       <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
