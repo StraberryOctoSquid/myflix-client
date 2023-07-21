@@ -18,7 +18,7 @@ export const MainView = () => {
             Title: movie.Title,
             ImagePath: movie.ImagePath,
             Description: movie.Description,
-            Actors: movie.Actors,
+            Actors: [movie.Actors],
             Genre: {
               Name: movie.Genre.Name,
               Description: movie.Genre.Description,
@@ -27,6 +27,8 @@ export const MainView = () => {
               Name: movie.Director.Name,
               Bio: movie.Director.Bio,
             },
+            Featured: movie.Featured,
+
           };
         });
 
@@ -49,7 +51,7 @@ export const MainView = () => {
     <div>
       {movies.map((movie) => (
         <MovieCard
-          key={movie.id}
+          key={movie._id}
           movie={movie}
           onMovieClick={(newSelectedMovie) => {
             setSelectedMovie(newSelectedMovie);
