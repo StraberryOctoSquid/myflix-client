@@ -39,7 +39,7 @@ export const SignupView = () => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          requiredminLength="3"
+          requiredminlength="3"
         />
       </label>
       <label>
