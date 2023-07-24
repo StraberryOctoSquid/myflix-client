@@ -2943,7 +2943,7 @@ $parcel$ReactRefreshHelpers$98a3.prelude(module);
 try {
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
-// Import statement to indicate that you need to bundle `./index.scss`
+// Import index.scss`
 var _indexScss = require("./index.scss");
 var _mainView = require("./components/main-view/main-view");
 // Main component (will eventually use all the others)
@@ -27302,20 +27302,33 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$f7a6.prelude(module);
 
 try {
+// This view is the "home" or standard view that the client will experience.
+// If a client is not registered, main view will import the signup view
+// If a client is registered but not logged in, main view will import the login view.
+// ?useEffect? (A hook that lets you synchronize a component with an external system) 
+// useState? (A hook that lets you add a state variable to your component)
+// (Why do they need to be imported from react?
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MainView", ()=>MainView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+// MovieCard formats how movie information should be loaded and displayed
 var _movieCard = require("../movie-card/movie-card");
+// MovieView formats the page when a movie is clicked on to display that movie's data.
 var _movieView = require("../movie-view/movie-view");
+// LoginView creates a log in form for the client to use their credentials to log in. The form requires certain validation
 var _loginView = require("../login-view/login-view");
+// Signupview creates a form for new users to sign up, it will store their information in the server, it requires validation.
 var _signupView = require("../signup-view/signup-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
+    // store the client's user name in local storage
     const storedUser = JSON.parse(localStorage.getItem("user"));
+    // Store the client's jwt token
     const storedToken = localStorage.getItem("token");
+    // ?Create array of movies, setMovies
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [user, setUser] = (0, _react.useState)(null);
@@ -27363,13 +27376,13 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 58,
+                lineNumber: 72,
                 columnNumber: 9
             }, undefined),
             "or",
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 65,
+                lineNumber: 79,
                 columnNumber: 9
             }, undefined)
         ]
@@ -27379,14 +27392,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 73,
+        lineNumber: 87,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 78,
+        lineNumber: 92,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27398,7 +27411,7 @@ const MainView = ()=>{
                     }
                 }, movie._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 84,
+                    lineNumber: 98,
                     columnNumber: 9
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27410,13 +27423,13 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 92,
+                lineNumber: 106,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 82,
+        lineNumber: 96,
         columnNumber: 5
     }, undefined);
 };
