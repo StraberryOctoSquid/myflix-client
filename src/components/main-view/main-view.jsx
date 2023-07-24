@@ -20,57 +20,67 @@ export const MainView = () => {
       />
     );
   }
+
   useEffect(() => {
-    fetch("https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/movies")
+    if (!token) {
+      return;
+    }
+
+    fetch("  https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then((response) => response.json())
       .then((data) => {
-        console.log("moviesFromApi", data);
-        const moviesFromApi = data.map((movie) => {
-          return {
-            _id: movie._id,
-            Title: movie.Title,
-            ImagePath: movie.ImagePath,
-            Description: movie.Description,
-            Actors: [movie.Actors],
-            Genre: {
-              Name: movie.Genre.Name,
-              Description: movie.Genre.Description,
-            },
-            Director: {
-              Name: movie.Director.Name,
-              Bio: movie.Director.Bio,
-            },
-            Featured: movie.Featured,
-
-          };
-        });
-
-        setMovies(moviesFromApi);
+        console.log(data);
       });
-  }, []);
+  }, [token]);
 
+  const moviesFromApi = data.map((movie) => {
+    return {
+      _id: movie._id,
+      Title: movie.Title,
+      ImagePath: movie.ImagePath,
+      Description: movie.Description,
+      Actors: [movie.Actors],
+      Genre: {
+        Name: movie.Genre.Name,
+        Description: movie.Genre.Description,
+      },
+      Director: {
+        Name: movie.Director.Name,
+        Bio: movie.Director.Bio,
+      },
+      Featured: movie.Featured,
 
-  if (selectedMovie) {
-    return (
-      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-    );
-  }
+    };
+  });
 
-  if (movies.length === 0) {
-    return <div>The list is empty!!</div>;
-  }
-
-  return (
-    <div>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie._id}
-          movie={movie}
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMovie(newSelectedMovie);
-          }}
-        />
-      ))}
-    </div>
-  );
+  setMovies(moviesFromApi);
 };
+[];
+
+
+if (selectedMovie) {
+  return (
+    <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+  );
+}
+
+if (movies.length === 0) {
+  return <div>The list is empty!!</div>;
+}
+
+return (
+  <div>
+    {movies.map((movie) => (
+      <MovieCard
+        key={movie._id}
+        movie={movie}
+        onMovieClick={(newSelectedMovie) => {
+          setSelectedMovie(newSelectedMovie);
+        }}
+      />
+    ))}
+  </div>
+);
+
