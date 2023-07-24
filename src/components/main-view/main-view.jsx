@@ -81,6 +81,7 @@ return (
         }}
       />
     ))}
+    <button onClick={() => { setUser(null); setToken(null); }}>Logout</button>
   </div>
 );
 
