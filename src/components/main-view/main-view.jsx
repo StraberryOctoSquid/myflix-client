@@ -4,7 +4,6 @@
 
 // ?useEffect? (A hook that lets you synchronize a component with an external system) 
 // useState? (A hook that lets you add a state variable to your component)
-// (Why do they need to be imported from react?
 import { useEffect, useState } from "react";
 // MovieCard formats how movie information should be loaded and displayed
 import { MovieCard } from "../movie-card/movie-card";
@@ -21,7 +20,7 @@ export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   // Store the client's jwt token
   const storedToken = localStorage.getItem("token");
-  // ?Create array of movies, setMovies
+  // ?create variables with state hooks and their default values?
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
@@ -30,16 +29,19 @@ export const MainView = () => {
 
 
   useEffect(() => {
+    //  ?if there is no token, then finish this function?
     if (!token)
       return;
-
+    // ?if there is a token then fetch movies using the baerer token
     fetch("https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` }
     })
+      // ?the format of the res will be json. we will call that response data?  
       .then((response) => response.json())
       .then((data) => {
 
-
+        // ?.map function creates new array for each movie object in database
+        // ?What happens with the data that is included with the response but not loaded? Where is it? In the browser?Local storage?
         const moviesFromApi = data.map((movie) => {
           return {
             _id: movie._id,
@@ -64,8 +66,10 @@ export const MainView = () => {
       .catch((error) => {
         console.error("Error fetching movies:", error);
       });
+    // ?what does this token do?
   }, [token]);
 
+  // ?If no user load loginview or signupview?
   if (!user) {
     return (
       <>
@@ -81,7 +85,8 @@ export const MainView = () => {
     );
   }
 
-
+  // ?If a movie is selected switch to movieview
+  // ?Is this where onBackCLick is defined or given function?
   if (selectedMovie) {
     return (
       <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
@@ -91,7 +96,7 @@ export const MainView = () => {
   if (movies.length === 0) {
     return <div>The list is empty!!</div>;
   }
-
+  // ? if a movie is selected run .map on that movie to create an array for each property, loading key, movie and onMovieClick?
   return (
     <div>
       {movies.map((movie) => (

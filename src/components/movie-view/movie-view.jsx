@@ -1,3 +1,5 @@
+// How does the back button work?
+// ?Where does onBackClick get it's powers? Main view?
 export const MovieView = ({ movie, onBackClick }) => {
   return (
     <div>

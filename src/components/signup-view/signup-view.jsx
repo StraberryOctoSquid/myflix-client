@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 
+// ?How do these const work?
 export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
+  //  ?What is the default that we are preventing?
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // ?What does this do?
     const data = {
       Username: username,
       Password: password,
@@ -16,6 +19,7 @@ export const SignupView = () => {
       Birthday: birthday
     };
 
+    // ?What initiates this fetch? ?handleSubmit?
     fetch("https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),

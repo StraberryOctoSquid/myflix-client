@@ -1,5 +1,9 @@
+// ? Props are arguments passed into React components?
+// ? What is index.d.ts?
 import PropTypes from "prop-types";
 
+// ?Exprot variable moviecard with properties movie and onmovieclick?
+// ?WHat does the rest of this code do?
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (
     <div
@@ -12,6 +16,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
   );
 };
 
+// ?PropTypes= I understand the basic idea, do I need to know more?
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     Actors: PropTypes.array.isRequired,
