@@ -1,18 +1,20 @@
-// ? Props are arguments passed into React components?
-// ? What is index.d.ts?
 import PropTypes from "prop-types";
+import { Button, Card } from 'react-bootstrap';
+
 
 // ?Exprot variable moviecard with properties movie and onmovieclick?
 // ?WHat does the rest of this code do?
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (
-    <div
-      onClick={() => {
-        onMovieClick(movie);
-      }}
-    >
-      {movie.Title}
-    </div>
+    <Card onClick={() => onMovieClick(movie)}>
+      <Card.Img variant="top" src={movie.ImagePath} />
+      <Card.Body>
+        <Card.Title>{movie.Title}</Card.Title>
+        <Card.Text>{movie.Description}</Card.Text>
+        <Button onClick={() => onMovieClick(movie)} variant="link">Open</Button>
+      </Card.Body>
+
+    </Card>
   );
 };
 
