@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form, Button, Card, CardGroup, Container, Col, Row } from "react-bootstrap";
-
+import "./login-view.scss";
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -53,7 +53,9 @@ export const LoginView = ({ onLoggedIn }) => {
               <Form.Label>Password:</Form.Label>
               <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength="3" />
             </Form.Group>
-            Password:
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
           </Form >
         </Col>
       </Row>
