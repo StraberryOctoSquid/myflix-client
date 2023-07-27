@@ -3,11 +3,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Import index.scss`
 import "./index.scss";
 import { MainView } from './components/main-view/main-view';
+import { Container } from 'react-bootstrap';
 
 // Main component (will eventually use all the others)
 const MyFlixApplication = () => {
   return (
-    <MainView />
+    <Container style={{ border: "1px solid red " }}>
+      <MainView />
+    </Container>
 
   );
 };
