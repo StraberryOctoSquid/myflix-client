@@ -13186,10 +13186,14 @@ textarea.form-control-lg {
   padding: 4px 12px;
 }
 
+.movie-poster {
+  width: 100%;
+}
+
 .login-card {
   text-align: center;
   width: 30px;
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 50px;
 }
 
