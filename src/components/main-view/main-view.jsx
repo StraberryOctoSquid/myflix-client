@@ -66,45 +66,42 @@ export const MainView = () => {
   }, [token]);
 
   // ?If no user load loginview or signupview?
-  if (!user) {
-    return (
-      <>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        <div className="or">or</div>
-        <SignupView />
-      </>
-    );
-  }
-
-  // ?If a movie is selected switch to movieview
-  // ?Is this where onBackCLick is defined or given function?
-  if (selectedMovie) {
-    return (
-      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-    );
-  }
-
-  if (movies.length === 0) {
-    return <div>The list is empty!!</div>;
-  }
-  // ? if a movie is selected run .map on that movie to create an array for each property, loading key, movie and onMovieClick?
   return (
-    <div>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie._id}
-          movie={movie}
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMovie(newSelectedMovie);
-          }}
+    <Row>
+      {!user ? (
+        <>
+          <LoginView
+            onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
+          <div className="or">or</div>
+          <SignupView />
+        </>
+
+
+      ) : selectedMovie ? (
+        <MovieView
+          movie={selectedMovie}
+          onBackClick={() => setSelectedMovie(null)}
         />
-      ))}
-      <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
-    </div>
+      ) : movies.length === 0 ? (
+        <div>The list is empty!!</div>
+      ) : (
+        <>
+          {movies.map((movie) => (
+            <MovieCard
+              key={movie._id}
+              movie={movie}
+              onMovieClick={(newSelectedMovie) => {
+                setSelectedMovie(newSelectedMovie);
+              }}
+            />
+          ))}
+          <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+        </>
+      )}
+    </Row>
   );
 };
