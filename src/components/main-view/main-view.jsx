@@ -10,6 +10,7 @@ import { SignupView } from "../signup-view/signup-view";
 import "./main-view.scss";
 import { Col, Container, Row } from "react-bootstrap";
 // Mainview is exported (with all of it's imports) to index.jsx
+
 export const MainView = () => {
   // store the client's user name in local storage
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -67,9 +68,9 @@ export const MainView = () => {
 
   // ?If no user load loginview or signupview?
   return (
-    <Row>
+    <Row className="justify-content-md-center">
       {!user ? (
-        <>
+        <Col md={8}>
           <LoginView
             onLoggedIn={(user, token) => {
               setUser(user);
@@ -78,20 +79,22 @@ export const MainView = () => {
           />
           <div className="or">or</div>
           <SignupView />
-        </>
+        </Col>
 
 
       ) : selectedMovie ? (
-        <MovieView
-          movie={selectedMovie}
-          onBackClick={() => setSelectedMovie(null)}
-        />
+        <Col md={8}>
+          <MovieView
+            movie={selectedMovie}
+            onBackClick={() => setSelectedMovie(null)}
+          />
+        </Col>
       ) : movies.length === 0 ? (
         <div>The list is empty!!</div>
       ) : (
         <>
           {movies.map((movie) => (
-            <Col md={3} key={movie._id}>
+            <Col className="mb-4" md={3} key={movie._id}>
               <MovieCard
                 movie={movie}
                 onMovieClick={(newSelectedMovie) => {
