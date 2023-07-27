@@ -9,11 +9,9 @@ export const SignupView = () => {
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
-  //  ?What is the default that we are preventing?
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // ?What does this do?
     const data = {
       Username: username,
       Password: password,
@@ -21,7 +19,6 @@ export const SignupView = () => {
       Birthday: birthday
     };
 
-    // ?What initiates this fetch? ?handleSubmit?
     fetch("https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
@@ -42,7 +39,7 @@ export const SignupView = () => {
       <Row className="justify-content-md-center">
         <Col md={6}>
           <CardGroup>
-            <Card className="login-card">
+            <Card className="signup-card">
               <Card.Title className="login-title">Create a New Account</Card.Title>
               <Card.Body>
 

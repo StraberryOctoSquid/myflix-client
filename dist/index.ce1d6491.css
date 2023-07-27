@@ -13193,6 +13193,13 @@ textarea.form-control-lg {
   margin-bottom: 50px;
 }
 
+.signup-card {
+  text-align: center;
+  width: 30px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
 .form-control {
   text-align: center;
 }

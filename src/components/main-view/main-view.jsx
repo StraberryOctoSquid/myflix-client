@@ -14,6 +14,7 @@ import { LoginView } from "../login-view/login-view";
 // Signupview creates a form for new users to sign up, it will store their information in the server, it requires validation.
 import { SignupView } from "../signup-view/signup-view";
 import "./main-view.scss";
+import { Container, Row } from "react-bootstrap";
 // Mainview is exported (with all of it's imports) to index.jsx
 export const MainView = () => {
   // store the client's user name in local storage
