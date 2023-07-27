@@ -23,6 +23,11 @@
 // q: Do you think I am pretty?
 // a: I don't have a sense of humor.
 // q: Do you think?
+// q: what is <Col md={6}> in react-bootstrap?
+// a: <Col md={6}> is a react-bootstrap component that is used to create a column that is 6 columns wide.
+// q: How wide is one column in react-bootstrap?
+// a: One column in react-bootstrap is 12 columns wide.
+
 
 
 
