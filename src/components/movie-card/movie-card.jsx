@@ -6,7 +6,7 @@ import { Button, Card } from 'react-bootstrap';
 // ?WHat does the rest of this code do?
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (
-    <Card onClick={() => onMovieClick(movie)}>
+    <Card className="h-100" onClick={() => onMovieClick(movie)}>
       <Card.Img variant="top" src={movie.ImagePath} />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
@@ -18,7 +18,6 @@ export const MovieCard = ({ movie, onMovieClick }) => {
   );
 };
 
-// ?PropTypes= I understand the basic idea, do I need to know more?
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     Actors: PropTypes.array.isRequired,
