@@ -35,7 +35,7 @@ export const SignupView = () => {
     });
   };
   return (
-    <Container style={{ border: "1px solid red " }}>
+    <Container>
       <Row className="justify-content-md-center">
         <Col md={6}>
           <CardGroup>
