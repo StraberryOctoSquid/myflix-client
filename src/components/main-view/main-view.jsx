@@ -31,6 +31,7 @@ export const MainView = () => {
     fetch("https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` }
     })
+      // ?the format of the res will be json. we will call that response data?  
       .then((response) => response.json())
       .then((data) => {
 
@@ -66,28 +67,31 @@ export const MainView = () => {
 
   // ?If no user load loginview or signupview?
   return (
-    <Row className="Justify-content-md-center">
+    <Row>
       {!user ? (
-        <Col md={5}>
-          <LoginView onLoggedIn={(user, token) => setUser(user)} />
+        <>
+          <LoginView
+            onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
           <div className="or">or</div>
           <SignupView />
-        </Col>
+        </>
 
 
       ) : selectedMovie ? (
-        <Col md={8} style={{ border: "1px solid black" }}>
-          <MovieView
-            movie={selectedMovie}
-            onBackClick={() => setSelectedMovie(null)}
-          />
-        </Col>
+        <MovieView
+          movie={selectedMovie}
+          onBackClick={() => setSelectedMovie(null)}
+        />
       ) : movies.length === 0 ? (
         <div>The list is empty!!</div>
       ) : (
         <>
           {movies.map((movie) => (
-            <Col className="mb-3" md={3} key={movie._id}>
+            <Col md={3} key={movie._id}>
               <MovieCard
                 movie={movie}
                 onMovieClick={(newSelectedMovie) => {
