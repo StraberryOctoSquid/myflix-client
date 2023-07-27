@@ -27313,11 +27313,6 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$f7a6.prelude(module);
 
 try {
-// This view is the "home" or standard view that the client will experience.
-// If a client is not registered, main view will import the signup view
-// If a client is registered but not logged in, main view will import the login view.
-// ?useEffect? (A hook that lets you synchronize a component with an external system) 
-// useState? (A hook that lets you add a state variable to your component)
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MainView", ()=>MainView);
@@ -27381,7 +27376,7 @@ const MainView = ()=>{
         }).catch((error)=>{
             console.error("Error fetching movies:", error);
         });
-    // ?what does this token do?
+    // If the token changes this function will run again.
     }, [
         token
     ]);
@@ -27395,7 +27390,7 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 77,
+                lineNumber: 72,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27403,12 +27398,12 @@ const MainView = ()=>{
                 children: "or"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 83,
+                lineNumber: 78,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 84,
+                lineNumber: 79,
                 columnNumber: 9
             }, undefined)
         ]
@@ -27420,14 +27415,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 93,
+        lineNumber: 88,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 98,
+        lineNumber: 93,
         columnNumber: 12
     }, undefined);
     // ? if a movie is selected run .map on that movie to create an array for each property, loading key, movie and onMovieClick?
@@ -27440,7 +27435,7 @@ const MainView = ()=>{
                     }
                 }, movie._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 104,
+                    lineNumber: 99,
                     columnNumber: 9
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27452,13 +27447,13 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 112,
+                lineNumber: 107,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 102,
+        lineNumber: 97,
         columnNumber: 5
     }, undefined);
 };
