@@ -6,7 +6,7 @@ export const MovieView = ({ movie, onBackClick }) => {
 
   return (
     <Col md={8} style={{ border: "1px solid black" }}>
-      <Row className="justify-content-md-center">
+      <Row style={{ border: "1px blue" }} className="justify-content-md-center">
         <div>
           <button
             onClick={onBackClick}
