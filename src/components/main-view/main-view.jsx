@@ -13,7 +13,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 // Signupview creates a form for new users to sign up, it will store their information in the server, it requires validation.
 import { SignupView } from "../signup-view/signup-view";
-
+import "./main-view.scss";
 // Mainview is exported (with all of it's imports) to index.jsx
 export const MainView = () => {
   // store the client's user name in local storage
@@ -79,7 +79,7 @@ export const MainView = () => {
             setToken(token);
           }}
         />
-        or
+        <div className="or">or</div>
         <SignupView />
       </>
     );
