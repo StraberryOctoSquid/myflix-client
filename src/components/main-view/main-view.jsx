@@ -1,9 +1,3 @@
-// This view is the "home" or standard view that the client will experience.
-// If a client is not registered, main view will import the signup view
-// If a client is registered but not logged in, main view will import the login view.
-
-// ?useEffect? (A hook that lets you synchronize a component with an external system) 
-// useState? (A hook that lets you add a state variable to your component)
 import { useEffect, useState } from "react";
 // MovieCard formats how movie information should be loaded and displayed
 import { MovieCard } from "../movie-card/movie-card";
@@ -67,7 +61,8 @@ export const MainView = () => {
       .catch((error) => {
         console.error("Error fetching movies:", error);
       });
-    // ?what does this token do?
+
+    // If the token changes this function will run again.
   }, [token]);
 
   // ?If no user load loginview or signupview?
