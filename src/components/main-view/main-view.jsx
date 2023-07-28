@@ -8,11 +8,12 @@ import { LoginView } from "../login-view/login-view";
 // Signupview creates a form for new users to sign up, it will store their information in the server, it requires validation.
 import { SignupView } from "../signup-view/signup-view";
 import "./main-view.scss";
-import { Col, Container, Row } from "react-bootstrap";
-// Mainview is exported (with all of it's imports) to index.jsx
+import { Col, Row } from "react-bootstrap";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
   // store the client's user name in local storage
+  // Q: Where is storedUser supposed to be used?
   const storedUser = JSON.parse(localStorage.getItem("user"));
   // Store the client's jwt token
   const storedToken = localStorage.getItem("token");
@@ -68,44 +69,62 @@ export const MainView = () => {
 
   // ?If no user load loginview or signupview?
   return (
-    <Row className="justify-content-md-center">
-      {!user ? (
-        <Col md={8}>
-          <LoginView
-            onLoggedIn={(user, token) => {
-              setUser(user);
-              setToken(token);
-            }}
+    <BrowserRouter>
+      <Row className="justify-content-md-center">
+        <Routes>
+          <Route
+            path="/signup"
+            element={
+              <>
+                {user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <Col md={5}>
+                    <SignupView />
+                  </Col>
+                )}
+              </>
+            }
           />
-          <div className="or">or</div>
-          <SignupView />
-        </Col>
-
-
-      ) : selectedMovie ? (
-        <Col md={8}>
-          <MovieView
-            movie={selectedMovie}
-            onBackClick={() => setSelectedMovie(null)}
-          />
-        </Col>
-      ) : movies.length === 0 ? (
-        <div>The list is empty!!</div>
-      ) : (
-        <>
-          {movies.map((movie) => (
-            <Col className="mb-4" md={3} key={movie._id}>
-              <MovieCard
-                movie={movie}
-                onMovieClick={(newSelectedMovie) => {
-                  setSelectedMovie(newSelectedMovie);
+          {!user ? (
+            <Col md={8}>
+              <LoginView
+                onLoggedIn={(user, token) => {
+                  setUser(user);
+                  setToken(token);
                 }}
               />
+              <div className="or">or</div>
+              <SignupView />
             </Col>
-          ))}
-          <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
-        </>
-      )}
-    </Row>
+
+
+          ) : selectedMovie ? (
+            <Col md={8}>
+              <MovieView
+                movie={selectedMovie}
+                onBackClick={() => setSelectedMovie(null)}
+              />
+            </Col>
+          ) : movies.length === 0 ? (
+            <div>The list is empty!!</div>
+          ) : (
+            <>
+              {movies.map((movie) => (
+                <Col className="mb-4" md={3} key={movie._id}>
+                  <MovieCard
+                    movie={movie}
+                    onMovieClick={(newSelectedMovie) => {
+                      setSelectedMovie(newSelectedMovie);
+                    }}
+                  />
+                </Col>
+              ))}
+              <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
+            </>
+          )}
+        </Routes>
+      </Row>
+    </BrowserRouter>
   );
 };
