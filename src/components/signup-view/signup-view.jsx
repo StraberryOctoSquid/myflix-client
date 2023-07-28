@@ -53,7 +53,7 @@ export const SignupView = () => {
 
                   <Form.Group className="mb-3" controlId="formBasicUsername">
                     {/* <Form.Label>Password:</Form.Label> */}
-                    <Form.Control type="text" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength="3" />
+                    <Form.Control type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength="3" />
                   </Form.Group>
 
                   <Form.Group className="mb-3" controlId="formBasicUsername">
@@ -61,9 +61,9 @@ export const SignupView = () => {
                     <Form.Control type="email" placeholder="Enter email address" value={email} onChange={(e) => setEmail(e.target.value)} required minLength="3" />
                   </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="formBasicUsername">
+                  <Form.Group className="mb-3" controlId="formBirthday">
                     {/* <Form.Label>Birthday:</Form.Label> */}
-                    <Form.Control type="text" placeholder="Enter birthday" value={birthday} onChange={(e) => setBirthday(e.target.value)} required minLength="3" />
+                    <Form.Control type="date" placeholder="Enter birthday" value={birthday} onChange={(e) => setBirthday(e.target.value)} />
                   </Form.Group>
 
                   <Button variant="primary" type="submit">
