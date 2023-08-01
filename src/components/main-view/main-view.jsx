@@ -72,12 +72,49 @@ export const MainView = () => {
     <BrowserRouter>
       <Row className="justify-content-md-center">
         <Routes>
-          <Route
-            path="/users"
+          {/* <Route
+            path="/"
             element={
               <>
                 {user ? (
-                  <Navigate to="/" />
+                  <Navigate to="/movies" />
+                ) : (
+                  <Col md={5}>
+                    <LoginView />
+                  </Col>
+                )}
+              </>
+            }
+          /> */}
+
+          {//If there is a user navigate to movies, if not navigate to login
+          }
+          <Route
+            path="/"
+            element={
+              <>
+                {user ? (
+                  <Navigate to="/movies" />
+                ) : (
+                  <Col md={5}>
+                    <LoginView
+                      onLoggedIn={(user, token) => {
+                        setUser(user);
+                        setToken(token);
+                      }} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+
+
+          <Route
+            path="/signup"
+            element={
+              <>
+                {user ? (
+                  <Navigate to="</>" />
                 ) : (
                   <Col md={5}>
                     <SignupView />
@@ -106,6 +143,7 @@ export const MainView = () => {
               </>
             }
           />
+
           <Route
             path="/movies/:movieId"
             element={
@@ -123,6 +161,7 @@ export const MainView = () => {
               </>
             }
           />
+
         </Routes>
       </Row>
     </BrowserRouter>
