@@ -74,6 +74,15 @@ export const MainView = () => {
   // ?If no user load loginview or signupview?
   return (
     <BrowserRouter>
+      <NavigationBar
+        user={user}
+        onLoggedOut={() => {
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+          setUser(null);
+          setToken(null);
+        }}
+      />
       <Row className="justify-content-md-center">
         <Routes>
 
