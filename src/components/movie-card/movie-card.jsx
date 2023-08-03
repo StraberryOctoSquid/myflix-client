@@ -26,6 +26,6 @@ MovieCard.propTypes = {
     Featured: PropTypes.bool,
     Genre: PropTypes.object,
     ImagePath: PropTypes.string,
-    id: PropTypes.string,
+    _id: PropTypes.string,
   }).isRequired,
 };
