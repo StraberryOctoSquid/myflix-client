@@ -18,22 +18,18 @@ export const MainView = () => {
 
 
   useEffect(() => {
-    //  ?if there is no token, then finish this function?
     if (!token)
       return;
-    // ?if there is a token then fetch movies using the baerer token
     fetch("https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` }
     })
-      // ?the format of the res will be json. we will call that response data?  
       .then((response) => response.json())
       .then((data) => {
-
-        // ?.map function creates new array for each movie object in database
-        // ?What happens with the data that is included with the response but not loaded? Where is it? In the browser?Local storage?
         const moviesFromApi = data.map((movie) => {
+          console.log("movie", movie);
           return {
-            _id: movie._id,
+
+            id: movie._id,
             Title: movie.Title,
             ImagePath: movie.ImagePath,
             Description: movie.Description,
