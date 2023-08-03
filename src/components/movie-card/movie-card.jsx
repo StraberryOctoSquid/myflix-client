@@ -1,10 +1,9 @@
+import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
-
-// ?Exprot variable moviecard with properties movie and onmovieclick?
-// ?WHat does the rest of this code do?
-export const MovieCard = ({ movie, onMovieClick }) => {
+export const MovieCard = ({ movie }) => {
   return (
     <Card className="h-100" onClick={() => onMovieClick(movie)}>
       <Card.Img variant="top" src={movie.ImagePath} />
