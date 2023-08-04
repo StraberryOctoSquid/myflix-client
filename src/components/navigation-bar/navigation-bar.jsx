@@ -21,7 +21,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
               <>
                 <NavDropdown title="myFlix" id="basic-nav-dropdown">
                   <NavDropdown.Item as={Link} to="/">Home</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/users">Profile</NavDropdown.Item>
                   <NavDropdown.Item as={Link} onClick={onLoggedOut}>Logout</NavDropdown.Item>
                 </NavDropdown>
               </>
