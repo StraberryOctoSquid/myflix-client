@@ -25,6 +25,7 @@ export const ProfileView = ({ user, token, movie, updatedUser, loggedOut }) => {
   };
 
   return (
+    console.log("user", user),
     <>
       <Container id="profile-container">
         <div className="mx-auto" id="box-profile-view">
