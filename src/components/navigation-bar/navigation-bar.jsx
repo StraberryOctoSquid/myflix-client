@@ -19,17 +19,13 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
-                <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                <NavDropdown title="myFlix" id="basic-nav-dropdown">
+                  <NavDropdown.Item as={Link} to="/">Home</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} onClick={onLoggedOut}>Logout</NavDropdown.Item>
+                </NavDropdown>
               </>
             )}
-            <NavDropdown title="myFlix" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/">Action</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/update">Update</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/delete">Delete</NavDropdown.Item>
-            </NavDropdown>
 
 
           </Nav>
