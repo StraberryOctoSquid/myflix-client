@@ -145,11 +145,37 @@ export const MainView = () => {
 
 
 
+          create a route to /profile that calls the ProfileView component
+          <Route
+            path="/profile"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col md={8}>
+
+                    <ProfileView
+                      user={user}
+                      token={token}
+                      setUser={setUser}
+                      movies={movies}
+                    // loggedOut={loggedOut}
+                    />
+                  </Col>
+                )}
+              </>
+            }
+          />
+
+
+
+
 
 
 
           <Route
-            path="/users"
+            path="/users/:username"
             element={
               <>
                 {!user ? (

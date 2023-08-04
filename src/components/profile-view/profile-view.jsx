@@ -40,6 +40,8 @@ export const ProfileView = ({ user, token, movie, updatedUser, loggedOut }) => {
             </Col>
             <Col className="mt-2">
               <Card.Text className="font-style" >
+                {/* Does not work if birthdate is null.
+                ?Is birthday field not validating input in signup? */}
                 Birthday: {user.Birthday.slice(0, 10)}
               </Card.Text>
             </Col>
@@ -63,6 +65,7 @@ export const ProfileView = ({ user, token, movie, updatedUser, loggedOut }) => {
             <Link to={`/users/updateUser`} className="user-edit">
               <span className="edit-user font-style">Edit All</span>
             </Link>
+            <br />
             <Button
               className="delete-btn font-style"
               variant="btn btn-danger"
