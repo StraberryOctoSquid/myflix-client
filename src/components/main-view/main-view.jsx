@@ -7,6 +7,7 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Col, Row } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
+import { UpdateUser } from "../profile-view/update-user";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -67,6 +68,11 @@ export const MainView = () => {
       />
       <Row className="justify-content-md-center">
         <Routes>
+
+          //create a route to UpdateUser that calls the UpdateUser component
+
+
+
 
           <Route
             path="/signup"
@@ -145,7 +151,29 @@ export const MainView = () => {
 
 
 
-          create a route to /profile that calls the ProfileView component
+          <Route
+            path="/users/updateUser"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col md={8}>
+                    <UpdateUser
+                      user={user}
+                      token={token}
+                      setUser={setUser}
+                      movies={movies}
+                    />
+                  </Col>
+                )}
+              </>
+            }
+          >
+
+          </Route>
+
+
           <Route
             path="/profile"
             element={
