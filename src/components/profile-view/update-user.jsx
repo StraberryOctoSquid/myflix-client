@@ -3,12 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { BsFillPersonFill } from 'react-icons/bs';
-import { AiFillLock } from 'react-icons/ai';
-import { MdEmail } from 'react-icons/md';
-import { FaBirthdayCake } from 'react-icons/fa';
-import './update-user.scss';
-import Swal from 'sweetalert2';
+// import Toast, { Toaster } from 'react-hot-toast';
 
 export const UpdateUser = ({ user, token, updatedUser }) => {
   const [username, setUsername] = useState('');
@@ -19,17 +14,6 @@ export const UpdateUser = ({ user, token, updatedUser }) => {
   const handleSubmitUpdate = (event) => {
     event.preventDefault();
 
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 2000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer);
-        toast.addEventListener('mouseleave', Swal.resumeTimer);
-      }
-    });
 
     const data = {
       Username: username,
@@ -38,7 +22,7 @@ export const UpdateUser = ({ user, token, updatedUser }) => {
       Birthday: birthday
     };
 
-    fetch(`https://nostalgic-flix.herokuapp.com/users/${user.Username}`, {
+    fetch(`https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users/${user.Username}`, {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {
@@ -50,23 +34,26 @@ export const UpdateUser = ({ user, token, updatedUser }) => {
         if (response.ok) {
           return response.json();
         } else {
-          Toast.fire({
-            icon: 'error',
-            title: 'failed trying to change settings'
-          });
+          console.log('failed to change settings');
+
+
+          // Toast.fire({
+          //   icon: 'error',
+          //   title: 'failed trying to change settings'
+          // });
           return false;
         }
       })
       .then((user) => {
         if (user) {
-          Toast.fire({
-            icon: 'success',
-            title: 'Settings updated'
-          });
+          console.log('settings updated');
+          // Toast.fire({
+          //   icon: 'success',
+          //   title: 'Settings updated'
+          // });
           setTimeout(function () {
-            window.location.replace('/users');
+            window.location.replace('/profile');
           }, 2000);
-          updatedUser(user);
         }
       })
       .catch((e) => {
@@ -93,7 +80,6 @@ export const UpdateUser = ({ user, token, updatedUser }) => {
               placeholder='Username'
             />
             <InputGroup.Text id='input-style-update-user'>
-              <BsFillPersonFill size={25} className='user-icon' />
             </InputGroup.Text>
           </InputGroup>
         </Form.Group>
@@ -105,10 +91,9 @@ export const UpdateUser = ({ user, token, updatedUser }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder='Password'
-              minLength='10'
+              minLength='4'
             />
             <InputGroup.Text id='input-style-update-user'>
-              <AiFillLock size={25} className='user-icon' />
             </InputGroup.Text>
           </InputGroup>
         </Form.Group>
@@ -122,7 +107,6 @@ export const UpdateUser = ({ user, token, updatedUser }) => {
               placeholder='Email'
             />
             <InputGroup.Text id='input-style-update-user'>
-              <MdEmail size={25} className='user-icon' />
             </InputGroup.Text>
           </InputGroup>
         </Form.Group>
@@ -136,7 +120,6 @@ export const UpdateUser = ({ user, token, updatedUser }) => {
               placeholder='Birthday'
             />
             <InputGroup.Text id='input-style-update-user'>
-              <FaBirthdayCake size={25} className='user-icon' />
             </InputGroup.Text>
           </InputGroup>
         </Form.Group>
