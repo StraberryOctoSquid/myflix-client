@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Card, CardGroup, Container, Col, Row } from "react-bootstrap";
-
+import { Link, Navigate } from "react-router-dom";
+import { LoginView } from "../login-view/login-view";
 
 
 export const SignupView = () => {
@@ -28,7 +29,12 @@ export const SignupView = () => {
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful");
-        window.location.reload();
+        LoginView();
+
+        // window.location.reload();
+        // <Navigate to="/login" replace />
+        return response.json();
+
       } else {
         alert("Signup failed");
       }
@@ -51,12 +57,12 @@ export const SignupView = () => {
                     <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} required minLength="3" />
                   </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="formBasicUsername">
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
                     {/* <Form.Label>Password:</Form.Label> */}
                     <Form.Control type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength="3" />
                   </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="formBasicUsername">
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
                     {/* <Form.Label>Email:</Form.Label> */}
                     <Form.Control type="email" placeholder="Enter email address" value={email} onChange={(e) => setEmail(e.target.value)} required minLength="3" />
                   </Form.Group>
