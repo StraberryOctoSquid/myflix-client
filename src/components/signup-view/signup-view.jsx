@@ -29,11 +29,11 @@ export const SignupView = () => {
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful");
-        LoginView();
+        return <LoginView />;
 
         // window.location.reload();
         // <Navigate to="/login" replace />
-        return response.json();
+        // return response.json();
 
       } else {
         alert("Signup failed");
