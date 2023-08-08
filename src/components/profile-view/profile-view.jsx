@@ -4,8 +4,9 @@ import { MovieCard } from "../movie-card/movie-card";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { WatchList } from "../profile-view/watch-list";
 
-export const ProfileView = ({ user, token, movie, updatedUser, loggedOut }) => {
+export const ProfileView = ({ user, token, movies, updatedUser, loggedOut }) => {
   // create a function allowing a user to delete their account
   const deleteAccount = () => {
     fetch(`https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users/${user.Username}`, {
@@ -25,7 +26,7 @@ export const ProfileView = ({ user, token, movie, updatedUser, loggedOut }) => {
   };
 
   return (
-    console.log("user", user),
+    console.log(token, movies),
     <>
       <Container id="profile-container">
         <div className="mx-auto" id="box-profile-view">
@@ -51,14 +52,17 @@ export const ProfileView = ({ user, token, movie, updatedUser, loggedOut }) => {
               </Card.Text>
             </Col>
             <Col className="mt-2">
-              <Link to={`/users/password-update`}
-                id="password-link"
-                className="password-edit"
-              >
-                <Card.Text className="font-style" >
-                  Update Password
-                </Card.Text>
-              </Link>
+
+              <WatchList
+                user={user}
+                token={token}
+                movies={movies}
+                updatedUser={updatedUser}
+              />
+
+              <Card.Text className="font-style" >
+                Watch List
+              </Card.Text>
             </Col>
             <Link to={`/users/updateUser`} className="user-edit">
             </Link>
