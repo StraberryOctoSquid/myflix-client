@@ -117,7 +117,7 @@ export const UpdateUser = ({ user, token, updatedUser }) => {
         <Button className='mt-4 col-9' variant='btn btn-success' type='submit'>
           Save
         </Button>
-        <Link to={'/users'} className='link-style-update-user'>
+        <Link to={'/profile'} className='link-style-update-user'>
           Back to Profile
         </Link>
       </div>
