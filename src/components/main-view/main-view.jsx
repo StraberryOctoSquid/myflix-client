@@ -69,10 +69,6 @@ export const MainView = () => {
       <Row className="justify-content-md-center">
         <Routes>
 
-          //create a route to UpdateUser that calls the UpdateUser component
-
-
-
 
           <Route
             path="/signup"
