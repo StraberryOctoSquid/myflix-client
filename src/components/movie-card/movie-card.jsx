@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie }) => {
   return (
-    <Card>
+    console.log("movie", movie),
+    < Card >
 
       <Card.Img variant="top" src={movie.ImagePath} />
 
@@ -18,11 +19,10 @@ export const MovieCard = ({ movie }) => {
         </Link>
         {/* create a button that allows a user to add a movie to user.favorites */}
         <Button variant="link" onClick={() => addFavorite(movie._id)}>Add to Favorites</Button>
-        console.log("movie", movie),
-        console.log("movieId", movie._Id),
+
 
       </Card.Body>
-    </Card>
+    </Card >
   );
 };
 
