@@ -5,18 +5,18 @@
 
 
 
-export const addFavorite = (movie.Id) => {
-  return {
-    type: ADD_FAVORITE,
-    movieId,
-  };
-}
+// export const addFavorite = (movie.Id) => {
+//   return {
+//     type: ADD_FAVORITE,
+//     movieId,
+//   };
+// }
 
-export const removeFavorite = (movie.Id) => {
-  return {
-    type: REMOVE_FAVORITE,
-    movieId,
-  };
-}
+// export const removeFavorite = (movie.Id) => {
+//   return {
+//     type: REMOVE_FAVORITE,
+//     movieId,
+//   };
+// }
 
 
