@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
-// import Toast, { Toaster } from 'react-hot-toast';
 
 export const UpdateUser = ({ user, token, updatedUser }) => {
   const [username, setUsername] = useState('');
@@ -37,20 +36,12 @@ export const UpdateUser = ({ user, token, updatedUser }) => {
           console.log('failed to change settings');
 
 
-          // Toast.fire({
-          //   icon: 'error',
-          //   title: 'failed trying to change settings'
-          // });
           return false;
         }
       })
       .then((user) => {
         if (user) {
           console.log('settings updated');
-          // Toast.fire({
-          //   icon: 'success',
-          //   title: 'Settings updated'
-          // });
           setTimeout(function () {
             window.location.replace('/profile');
           }, 2000);
