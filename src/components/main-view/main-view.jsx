@@ -10,11 +10,16 @@ import { ProfileView } from "../profile-view/profile-view";
 import { UpdateUser } from "../profile-view/update-user";
 
 export const MainView = () => {
+  const [movies, setMovies] = useState([]);
+
+  // const storedUser = localStorage.getItem("user");
+
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser);
   const [token, setToken] = useState(storedToken);
+  // const [user, setUser] = useState(null);
+  // const [token, setToken] = useState(null);
 
 
   useEffect(() => {
