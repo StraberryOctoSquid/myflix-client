@@ -1,38 +1,78 @@
+import { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
+import { Card } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import "./movie-view.scss";
 
 
-export const MovieView = ({ movies }) => {
+export const MovieView = ({ movies, user, setUser, token }) => {
   const { movieId } = useParams();
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const isFavorited = user.FavoriteMovies.includes(movieId)
+    setIsFavorite(isFavorited)
+  }, []);
+
+  const removeFavorite = () => {
+    fetch("https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users${user.Username}/movies/${movieId}", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    }).then((response) => {
+      if (response.ok) {
+        return response.json()
+      }
+    }).then((data) => {
+      setIsFavorite(false);
+      localStorage.setItem("user", JSON.stringify(data));
+      setUser(data);
+    })
+  };
+
+  const addToFavorite = () => {
+    fetch(`https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users/${user.Username}/${movieId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    }).then((response) => {
+      if (response.ok) {
+        return response.json()
+      }
+    }).then((data) => {
+      setIsFavorite(true);
+      localStorage.setItem("user", JSON.stringify(data));
+      setUser(data);
+    })
+  }
 
   const movie = movies.find((m) => m._id === movieId);
 
   return (
-    <Link to={`/`} style={{ textDecoration: "none", color: "black" }} className="movie-poster">
-      <div>
-        <div>
-          <img
-            className="w-100"
-            src={movie.ImagePath}
-          />
-        </div>
-        <div>
-          <span>Title: </span>
-          <span>{movie.Title}</span>
-        </div>
-        <div>
-          <span>Director: </span>
-          <span>{movie.Director.Name} </span>
-        </div>
-        <div>
-          <span>Description: </span>
-          <span>{movie.Description} </span>
-        </div>
+    <Card className="mt-1 mb-1 h-100 bg-secondary text-white" >
+      <Card.Img variant="top" src={movie.ImagePath} />
+      <Card.Body>
+        <Card.Title>{movie.Title}</Card.Title>
+        <Card.Text>Description: {movie.Description}</Card.Text>
+        <Card.Text>Director: {movie.Director.Name}</Card.Text>
+        <Card.Text>Bio: {movie.Director.Bio}</Card.Text>
+        <Card.Text>Genre: {movie.Genre.Name}</Card.Text>
+        <Card.Text>Description: {movie.Genre.Description}</Card.Text>
+      </Card.Body>
 
-        {/* <button className="back-button">Back</button> */}
+      {isFavorite ? (
+        <Button onClick={removeFavorite}>Remove from favorites</Button>
+      ) : (
+        <Button onClick={addToFavorite}>Add to favorites</Button>
+      )}
 
-      </div>
-    </Link>
-  );
-};
+      <Link to={"/"}>
+        <Button>Back</Button>
+      </Link>
+    </Card>
+  )
+}
