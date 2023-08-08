@@ -5,23 +5,25 @@ import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie }) => {
   return (
-    <Link to={`/movies/${encodeURIComponent(movie._id)}`} style={{ textDecoration: "none" }}>
-      <Card>
-        {/* <Card.Img variant="top" src={movie.ImagePath} /> */}
+    // <Link to={`/movies/${encodeURIComponent(movie._id)}`} style={{ textDecoration: "none" }}>
+    <Card>
+
+      <Card.Img variant="top" src={movie.ImagePath} />
 
 
-        <Card.Img variant="top" src={movie.ImagePath} />
-
-
-        <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description}</Card.Text>
-          {/* <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+      <Card.Body>
+        <Card.Title>{movie.Title}</Card.Title>
+        <Card.Text>{movie.Description}</Card.Text>
+        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button variant="link">Open</Button>
-        </Link> */}
-        </Card.Body>
-      </Card>
-    </Link>
+        </Link>
+        {/* create a button that allows a user to add a movie to user.favorites */}
+        <Button variant="link" onClick={() => addFavorite(movie)}>Add to Favorites</Button>
+
+
+      </Card.Body>
+    </Card>
+    // </Link>
   );
 };
 
