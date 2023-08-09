@@ -9,6 +9,7 @@ export const MovieView = ({ movies, user, setUser, token }) => {
   const movie = movies.find((m) => m._id === movieId);
 
   return (
+    // remove this styling
     <Link to={`/`} style={{ textDecoration: "none", color: "black" }} className="movie-poster">
       <div>
         <div>

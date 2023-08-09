@@ -1,24 +1,21 @@
-import { Row, Col } from 'react-bootstrap';
-import { MovieCard } from '../movie-card/movie-card';
+import { Row, Col, Container } from 'react-bootstrap';
+
+export const WatchList = (user) => {
+  console.log("fart");
+  console.log("user", user);
+  // what is happening? How did I turn user into an object inside of user?
+  console.log("favMovies", user.FavoriteMovies);
 
 
-export const WatchList = ({ user, token, movies, updatedUser }) => {
-  let result = movies.filter((movie) => user.FavoriteMovies.includes(movie._id));
-  console.log("all of the movies", movies)
   return (
-    <>
-      <Row>
-        {result.map((movie) => (
-          <Col className='mb-4' md={3}>
-            <MovieCard
-              movie={movie}
-              user={user}
-              updatedUser={updatedUser}
-              token={token}
-            />
-          </Col>
-        ))}
+    console.log("fart1"),
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col md={12}>
+          <h1 className="font-style">Watch List</h1>
+          <h2 className="font-style">Movies you want to watch</h2>
+        </Col>
       </Row>
-    </>
+    </Container>
   );
 };

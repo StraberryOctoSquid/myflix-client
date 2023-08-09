@@ -1,22 +1,50 @@
-// Create a function called addFavorite(movieId) in src\movie-card\addFavorite.jsx that will make a GET request to the /users/:Username/movies/:MovieID endpoint in the backend. (You will need to pass a JWT in the Authorization header.) The function should return an object with a type of ADD_FAVORITE and a movieId property.
-//
-// Create a function called removeFavorite(movieId) in src\movie-card\removeFavorite.jsx that will make a DELETE request to the /users/:Username/movies/:MovieID endpoint in the backend. (You will need to pass a JWT in the Authorization header.) The function should return an object with a type of REMOVE_FAVORITE and a movieId property.
-//
+import { useState } from "react";
+
+export const addFavorite = (movie, token, user) => {
+  console.log("movie title", movie.Title);
+  console.log("movieid", movie._id);
+  console.log("token", token);
+  console.log("user", user);
+  console.log("Username", user.Username);
+  // const [token, setToken] = useState(storedToken);
+
+  const addToFavorite = () => {
+    fetch(`https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+      method: "GET",
+      headers: {
+        // "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("added to favorite");
+          return res.json();
+        }
+      }).then((data) => {
+        console.log(data);
+        // setIsFavorite(true);
+        // localStorage.setItem("user, JSON.stringify(data)");
+        alert("Added to Favorites");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  addToFavorite();
 
 
 
-// export const addFavorite = (movie.Id) => {
-//   return {
-//     type: ADD_FAVORITE,
-//     movieId,
-//   };
-// }
+  return {
+  };
 
-// export const removeFavorite = (movie.Id) => {
-//   return {
-//     type: REMOVE_FAVORITE,
-//     movieId,
-//   };
-// }
+
+
+
+}
+
+
+
+
 
 

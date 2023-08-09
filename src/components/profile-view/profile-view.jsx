@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { WatchList } from "../profile-view/watch-list";
 
 export const ProfileView = ({ user, token, movies, updatedUser, loggedOut }) => {
-  // create a function allowing a user to delete their account
+  console.log("token", token);
   const deleteAccount = () => {
     fetch(`https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users/${user.Username}`, {
       method: "DELETE",
@@ -20,6 +20,7 @@ export const ProfileView = ({ user, token, movies, updatedUser, loggedOut }) => 
           loggedOut();
         }
       })
+      // fix this catch
       .catch((e) => {
         alert("Account deletion failed");
       });
@@ -53,33 +54,44 @@ export const ProfileView = ({ user, token, movies, updatedUser, loggedOut }) => 
             </Col>
             <Col className="mt-2">
 
-              <WatchList
-                user={user}
-                token={token}
-                movies={movies}
-                updatedUser={updatedUser}
-              />
+              <Button
+                className="delete-btn font-style"
+                variant="primary"
+                onClick={() => {
+                  WatchList(user);
 
-              <Card.Text className="font-style" >
+                  // Why are components sometimes called like above and sometimes like below?
+                  // <WatchList
+                  //   user={user}
+                  //   token={token}
+                  //   movies={movies}
+                  //   updatedUser={updatedUser}
+                  // />;
+                }}
+
+              >
                 Watch List
-              </Card.Text>
+              </Button>
+
             </Col>
-            <Link to={`/users/updateUser`} className="user-edit">
-            </Link>
-            <Link to={`/users/updateUser`} className="user-edit">
+
+            <Link to={`/users/updateUser`} className="user-edit" >
               <span className="edit-user font-style">Edit All</span>
             </Link>
+
+            {/* style this using row? */}
             <br />
+
             <Button
               className="delete-btn font-style"
               variant="btn btn-danger"
               onClick={() => {
                 deleteAccount();
               }}
-
             >
               Delete Account
             </Button>
+
           </div>
         </div>
       </Container>

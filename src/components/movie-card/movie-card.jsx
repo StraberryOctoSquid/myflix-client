@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { addFavorite } from "../movie-card/addFavorite.jsx"
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie, token, user }) => {
   return (
-    console.log("movie", movie),
     < Card >
 
       <Card.Img variant="top" src={movie.ImagePath} />
@@ -18,7 +18,7 @@ export const MovieCard = ({ movie }) => {
           <Button variant="link">Open</Button>
         </Link>
         {/* create a button that allows a user to add a movie to user.favorites */}
-        <Button variant="link" onClick={() => addFavorite(movie._id)}>Add to Favorites</Button>
+        <Button variant="link" onClick={() => addFavorite(movie, token, user)}>Add to Favorites</Button>
 
 
       </Card.Body>

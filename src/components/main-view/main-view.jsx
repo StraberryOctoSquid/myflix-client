@@ -8,6 +8,7 @@ import { Col, Row } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
 import { UpdateUser } from "../profile-view/update-user";
+import { WatchList } from "../profile-view/watch-list";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -20,7 +21,7 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken);
   // const [user, setUser] = useState(null);
   // const [token, setToken] = useState(null);
-
+  console.log("user", user);
 
   useEffect(() => {
     if (!token)
@@ -140,7 +141,10 @@ export const MainView = () => {
                     <>
                       {movies.map((movie) => (
                         <Col className="mb-4" key={movie._id} md={3}>
-                          <MovieCard movie={movie} />
+                          <MovieCard
+                            movie={movie}
+                            token={token}
+                            user={user} />
                         </Col>
                       ))}
                     </>
@@ -197,6 +201,36 @@ export const MainView = () => {
             }
           />
 
+          <Route
+            path="/watch-list"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) :
+                  user.FavoriteMovies.length === 0 ? (
+                    <Col> The List is Empty!</Col>
+                  ) : (
+                    <>
+                      {movies.filter((movie) => user.FavoriteMovies.includes(movie._id)).map((movie) => (
+                        <Col className="mb-4" key={movie._id} md={3}>
+                          <MovieCard
+                            movie={movie}
+                            token={token}
+                            user={user} />
+                        </Col>
+                      ))}
+                    </>
+                  )
+                }
+              </>
+            }
+
+          />
+
+
+
+
 
 
 
@@ -221,7 +255,7 @@ export const MainView = () => {
 
 
         </Routes>
-      </Row>
-    </BrowserRouter>
+      </Row >
+    </BrowserRouter >
   );
 };
