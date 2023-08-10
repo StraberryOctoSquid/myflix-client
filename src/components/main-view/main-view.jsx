@@ -17,7 +17,7 @@ export const MainView = () => {
 
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser);
+  const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken);
   // const [user, setUser] = useState(null);
   // const [token, setToken] = useState(null);
@@ -58,6 +58,10 @@ export const MainView = () => {
       });
 
     // If the token changes this function will run again.
+    // Why doesn't this fix the issue with the user not being saved?
+    // I think it is because the user is not being saved to local storage.
+    // I think I need to save the user to local storage.
+
   }, [token]);
 
   // ?If no user load loginview or signupview?
