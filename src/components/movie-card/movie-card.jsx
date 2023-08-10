@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { addFavorite } from "../movie-card/addFavorite.jsx"
 import { useState } from "react";
 
-export const MovieCard = ({ movie, token, user }) => {
+export const MovieCard = ({ movie, token, user, setUser }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   // console.log("user", user);
