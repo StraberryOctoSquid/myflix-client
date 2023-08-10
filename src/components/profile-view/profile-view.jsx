@@ -34,7 +34,7 @@ export const ProfileView = ({ user, token, movies, updatedUser, loggedOut }) => 
         <div className="mx-auto" id="box-profile-view">
           <div id="form-signup">
             <Card.Title className="font-style" id="settings-heading">
-              Settings
+              Profile
             </Card.Title>
             <Col className="mt-2">
               <Card.Text className="font-style" >
@@ -55,24 +55,15 @@ export const ProfileView = ({ user, token, movies, updatedUser, loggedOut }) => 
             </Col>
             <Col className="mt-2">
 
-              <Button
-                className="delete-btn font-style"
-                variant="primary"
-                onClick={() => {
-                  WatchList(user);
 
-                  // Why are components sometimes called like above and sometimes like below?
+              {/* // Why are components sometimes called like above and sometimes like below?
                   // <WatchList
                   //   user={user}
                   //   token={token}
                   //   movies={movies}
                   //   updatedUser={updatedUser}
-                  // />;
-                }}
+                  // />; */}
 
-              >
-                Watch List
-              </Button>
 
             </Col>
 
