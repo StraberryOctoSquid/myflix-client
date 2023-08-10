@@ -32,6 +32,7 @@ export const LoginView = ({ onLoggedIn }) => {
         }
       })
       .catch((e) => {
+        console.log("error: ", e);
         alert("Something went wrong");
       });
   };
