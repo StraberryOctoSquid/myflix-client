@@ -1,9 +1,9 @@
+// delete this whole file?? not sure if it's needed
 import { Row, Col, Container } from 'react-bootstrap';
 
 export const WatchList = (user) => {
   console.log("fart");
   console.log("user", user);
-  // what is happening? How did I turn user into an object inside of user?
   console.log("favMovies", user.FavoriteMovies);
 
 
