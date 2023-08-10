@@ -6,7 +6,32 @@ import { addFavorite } from "../movie-card/addFavorite.jsx"
 import { useState } from "react";
 
 export const MovieCard = ({ movie, token, user, setUser }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const removeFavorite = (movie, token, user, setUser) => {
+    console.log("removeFavorite");
+    fetch(`https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("removed from favorite");
+          return res.json();
+        }
+      }).then((data) => {
+        console.log("Data:", data);
+        // setIsFavorite(false);
+        setUser(data);
+        alert("Removed from Favorites");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const [isFavorite, setIsFavorite] = useState(true);
 
   // console.log("user", user);
   // console.log("user.FavoriteMovies", user.FavoriteMovies);
@@ -41,9 +66,9 @@ export const MovieCard = ({ movie, token, user, setUser }) => {
         {/* create a button that allows a user to add a movie to user.favorites */}
 
         {isFavorite ? (
-          <Button variant="link" onClick={() => removeFavorite(movie, token, user)}>Remove from Favorites</Button>
+          <Button variant="link" onClick={() => removeFavorite(movie, token, user, setUser)}>Remove from Favorites</Button>
         ) : (
-          <Button variant="link" onClick={() => addFavorite(movie, token, user)}>Add to Favorites</Button>
+          <Button variant="link" onClick={() => addFavorite(movie, token, user, setUser)}>Add to Favorites</Button>
         )}
         {/* <Button variant="link" onClick={() => addFavorite(movie, token, user)}>{x}</Button> */}
 
