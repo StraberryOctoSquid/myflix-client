@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // export const addFavorite = (movie, token, user) => {
 //   console.log("movie title", movie.Title);
@@ -9,7 +9,7 @@ import { useState } from "react";
 
 // const [token, setToken] = useState(storedToken);
 
-export const addFavorite = (movie, token, user, setUser) => {
+export const addFavorite = (movie, token, user, setUser, setIsFavorite) => {
   fetch(`https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
     method: "GET",
     headers: {
@@ -24,8 +24,10 @@ export const addFavorite = (movie, token, user, setUser) => {
       }
     }).then((data) => {
       console.log("Data:", data);
-      // setIsFavorite(true);
+      setIsFavorite(true);
+      console.log("isFavorite", setIsFavorite);
       // localStorage.setItem("user, JSON.stringify(data)");
+
       setUser(data);
       alert("Added to Favorites");
     })
@@ -33,20 +35,5 @@ export const addFavorite = (movie, token, user, setUser) => {
       console.log(err);
     });
 };
-// addToFavorite();
-
-
-
 return {
 };
-
-
-
-
-// }
-
-
-
-
-
-
