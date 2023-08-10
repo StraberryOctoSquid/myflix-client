@@ -23,11 +23,12 @@ export const ProfileView = ({ user, token, movies, updatedUser, loggedOut }) => 
       // fix this catch
       .catch((e) => {
         alert("Account deletion failed");
+        console.log(e);
       });
   };
 
   return (
-    console.log(token, movies),
+    console.log("token", token, "movies", movies),
     <>
       <Container id="profile-container">
         <div className="mx-auto" id="box-profile-view">
