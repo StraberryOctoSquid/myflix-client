@@ -31,8 +31,8 @@ export
         }).then((data) => {
           console.log("Data:", data);
           setIsFavorite(false);
+          localStorage.setItem("user", JSON.stringify(data));
           setUser(data);
-          alert("Removed from Favorites");
         })
         .catch((err) => {
           console.log(err);
