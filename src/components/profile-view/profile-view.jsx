@@ -25,11 +25,17 @@ export const ProfileView = ({ user, token, movies, setUser, onLoggedOut }) => {
   return (
     console.log("token", token, "movies", movies),
     <>
-      <Container id="profile-container">
+      <Container
+        className="d-flex justify-content-center"
+        id="profile-container">
         <div
-          style={{ border: "solid 1px black" }}
+          // style={{ border: "solid 1px black" }}
           className="justify-content-md-center" id="box-profile-view">
-          <Card.Title className="font-style" id="settings-heading">
+          <Card.Title
+            //center this card title
+            // className="d-flex justify-content-center"
+            className="font-style" id="settings-heading"
+          >
             Profile
           </Card.Title>
           <Col className="mt-2">
@@ -51,14 +57,6 @@ export const ProfileView = ({ user, token, movies, setUser, onLoggedOut }) => {
           </Col>
           <Col className="mt-2">
 
-
-            {/* // Why are components sometimes called like above and sometimes like below?
-                  // <WatchList
-                  //   user={user}
-                  //   token={token}
-                  //   movies={movies}
-                  //   updatedUser={updatedUser}
-                  // />; */}
 
 
           </Col>
