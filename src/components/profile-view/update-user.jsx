@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-export const UpdateUser = ({ user, token, updatedUser }) => {
+export const UpdateUser = ({ user, token, setUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -39,18 +39,17 @@ export const UpdateUser = ({ user, token, updatedUser }) => {
           return false;
         }
       })
-      .then((user) => {
-        if (user) {
-          console.log('settings updated');
-          setTimeout(function () {
-            window.location.replace('/profile');
-          }, 2000);
-        }
+      .then((data) => {
+        console.log(data);
+        localStorage.setItem('user', JSON.stringify(data));
+        setUser(data);
+        window.location.replace('/profile');
       })
       .catch((e) => {
-        alert(e);
+        console.log(e);
       });
   };
+
 
   return (
     <Form
@@ -64,7 +63,7 @@ export const UpdateUser = ({ user, token, updatedUser }) => {
           <Form.Label></Form.Label>
           <InputGroup>
             <Form.Control
-              type='text'
+              type='username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               minLength='7'
