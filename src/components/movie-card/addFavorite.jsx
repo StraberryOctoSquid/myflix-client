@@ -13,7 +13,7 @@ export const addFavorite = (movie, token, user, setUser, setIsFavorite) => {
   fetch(`https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
     method: "GET",
     headers: {
-      // "Content-Type": "application/json",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   })
@@ -26,10 +26,10 @@ export const addFavorite = (movie, token, user, setUser, setIsFavorite) => {
       console.log("Data:", data);
       setIsFavorite(true);
       console.log("isFavorite", setIsFavorite);
-      // localStorage.setItem("user, JSON.stringify(data)");
+      localStorage.setItem("user", JSON.stringify(data));
 
       setUser(data);
-      alert("Added to Favorites");
+      // alert("Added to Favorites");
     })
     .catch((err) => {
       console.log(err);
