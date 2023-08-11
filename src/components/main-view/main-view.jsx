@@ -16,6 +16,7 @@ export const MainView = () => {
 
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
+  // What does this do?
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken);
   // const [user, setUser] = useState(null);
@@ -32,6 +33,7 @@ export const MainView = () => {
     if (!token)
       return;
     fetch("https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/movies", {
+      method: "GET",
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => response.json())
@@ -251,7 +253,9 @@ export const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col md={8}>
-                    <ProfileView movies={movies} />
+                    <ProfileView
+                      movies={movies}
+                      setUser={setUser} />
                   </Col>
                 )}
               </>
