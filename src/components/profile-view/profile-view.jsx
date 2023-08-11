@@ -5,7 +5,7 @@ import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-export const ProfileView = ({ user, token, movies, updatedUser, loggedOut }) => {
+export const ProfileView = ({ user, token, movies, setUser, onLoggedOut }) => {
   console.log("token", token);
   const deleteAccount = () => {
     fetch(`https://straberryoctosquid-1858bcf4dbcb.herokuapp.com/users/${user.Username}`, {
@@ -16,10 +16,9 @@ export const ProfileView = ({ user, token, movies, updatedUser, loggedOut }) => 
         if (response.ok) {
           alert("Your account has been deleted");
           window.location.replace("/signup");
-          loggedOut();
+          onLoggedOut();
         }
       })
-      // fix this catch
       .catch((e) => {
         alert("Account deletion failed");
         console.log(e);

@@ -21,6 +21,12 @@ export const MainView = () => {
   // const [user, setUser] = useState(null);
   // const [token, setToken] = useState(null);
   console.log("user", user);
+  const onLoggedOut = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setUser(null);
+    setToken(null);
+  };
 
   useEffect(() => {
     if (!token)
@@ -68,12 +74,7 @@ export const MainView = () => {
     <BrowserRouter>
       <NavigationBar
         user={user}
-        onLoggedOut={() => {
-          localStorage.removeItem("user");
-          localStorage.removeItem("token");
-          setUser(null);
-          setToken(null);
-        }}
+        onLoggedOut={onLoggedOut}
       />
       <Row className="justify-content-md-center">
         <Routes>
@@ -197,7 +198,7 @@ export const MainView = () => {
                       token={token}
                       setUser={setUser}
                       movies={movies}
-                    // loggedOut={loggedOut}
+                      onLoggedOut={onLoggedOut}
                     />
                   </Col>
                 )}
