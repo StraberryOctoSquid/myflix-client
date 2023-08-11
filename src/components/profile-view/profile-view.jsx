@@ -4,7 +4,6 @@ import { MovieCard } from "../movie-card/movie-card";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { WatchList } from "../profile-view/watch-list";
 
 export const ProfileView = ({ user, token, movies, updatedUser, loggedOut }) => {
   console.log("token", token);

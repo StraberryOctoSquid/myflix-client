@@ -8,7 +8,6 @@ import { Col, Row } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
 import { UpdateUser } from "../profile-view/update-user";
-import { WatchList } from "../profile-view/watch-list";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
