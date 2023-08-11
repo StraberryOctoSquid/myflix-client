@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { MovieCard } from "../movie-card/movie-card";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card } from "react-bootstrap";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const ProfileView = ({ user, token, movies, setUser, onLoggedOut }) => {
   console.log("token", token);
