@@ -11,16 +11,12 @@ import { UpdateUser } from "../profile-view/update-user";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
-
-  // const storedUser = localStorage.getItem("user");
-
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
+
   // What does this do?
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken);
-  // const [user, setUser] = useState(null);
-  // const [token, setToken] = useState(null);
   console.log("user", user);
   const onLoggedOut = () => {
     localStorage.removeItem("user");
@@ -64,11 +60,6 @@ export const MainView = () => {
         console.error("Error fetching movies:", error);
       });
 
-    // If the token changes this function will run again.
-    // Why doesn't this fix the issue with the user not being saved?
-    // I think it is because the user is not being saved to local storage.
-    // I think I need to save the user to local storage.
-
   }, [token]);
 
   // ?If no user load loginview or signupview?
@@ -78,9 +69,10 @@ export const MainView = () => {
         user={user}
         onLoggedOut={onLoggedOut}
       />
-      <Row className="justify-content-md-center">
+      <Row
+        style={{ border: "1px solid black" }}
+        className="justify-content-md-center">
         <Routes>
-
 
           <Route
             path="/signup"
