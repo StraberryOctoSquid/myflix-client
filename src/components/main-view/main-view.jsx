@@ -70,7 +70,7 @@ export const MainView = () => {
         onLoggedOut={onLoggedOut}
       />
       <Row
-        style={{ border: "1px solid black" }}
+        // style={{ border: "1px solid black" }}
         className="justify-content-md-center">
         <Routes>
 
@@ -185,7 +185,11 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : (
-                  <Col md={8}>
+                  <Col
+                    //center content within <col
+                    // className="d-flex justify-content-center"
+
+                    md={8}>
 
                     <ProfileView
                       user={user}
