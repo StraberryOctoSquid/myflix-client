@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container, Nav } from "react-bootstrap";
 import { Button, Card } from "react-bootstrap";
+import "./profile-view.scss";
+import { UpdateUser } from "./update-user";
 
 export const ProfileView = ({ user, token, movies, setUser, onLoggedOut }) => {
   console.log("token", token);
@@ -26,15 +28,15 @@ export const ProfileView = ({ user, token, movies, setUser, onLoggedOut }) => {
     console.log("token", token, "movies", movies),
     <>
       <Container
-        className="d-flex justify-content-center"
+        // className="d-flex justify-content-center"
         id="profile-container">
         <div
           // style={{ border: "solid 1px black" }}
           className="justify-content-md-center" id="box-profile-view">
           <Card.Title
-            //center this card title
-            // className="d-flex justify-content-center"
-            className="font-style" id="settings-heading"
+          //center this card title
+          // className="d-flex justify-content-center"
+          // className="font-style" id="settings-heading"
           >
             Profile
           </Card.Title>
@@ -55,28 +57,31 @@ export const ProfileView = ({ user, token, movies, setUser, onLoggedOut }) => {
               Email: {user.Email}
             </Card.Text>
           </Col>
-          <Col className="mt-2">
 
+          <Col className="mt-2">
+            <Nav fill variant="pills" defaultActiveKey="/users/updateUser">
+              <Nav.Item>
+                <Nav.Link
+                  href="/users/updateUser"
+                >Edit Profile</Nav.Link>
+              </Nav.Item>
+            </Nav>
 
 
           </Col>
 
-          <Link to={`/users/updateUser`} className="user-edit" >
-            <span className="edit-user font-style">Edit All</span>
-          </Link>
-
-          {/* style this using row? */}
-          <br />
-
-          <Button
-            className="delete-btn font-style"
-            variant="btn btn-danger"
-            onClick={() => {
-              deleteAccount();
-            }}
-          >
-            Delete Account
-          </Button>
+          <Col className="d-grid gap-2">
+            <Button
+              id="delete-btn"
+              className="delete-btn font-style"
+              variant="danger"
+              onClick={() => {
+                deleteAccount();
+              }}
+            >
+              Delete Account
+            </Button>
+          </Col>
 
         </div>
         {/* </div> */}

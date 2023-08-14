@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import { Button } from 'react-bootstrap';
+import { Button, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
 
@@ -113,9 +113,12 @@ export const UpdateUser = ({ user, token, setUser }) => {
             </InputGroup.Text>
           </InputGroup>
         </Form.Group>
-        <Button className='mt-4 col-9' variant='btn btn-success' type='submit'>
-          Save
-        </Button>
+        <Col className='d-grid gap-2'>
+          <Button className='' variant='btn btn-success' type='submit'>
+            Save
+          </Button>
+        </Col>
+        <br />
         <Link to={'/profile'} className='link-style-update-user'>
           Back to Profile
         </Link>
