@@ -4,7 +4,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { Col, Row } from "react-bootstrap";
+import { Col, InputGroup, Row, Form } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
 import { UpdateUser } from "../profile-view/update-user";
@@ -13,11 +13,11 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-
-  // What does this do?
+  const [Search, setSearch] = useState("");
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken);
   console.log("user", user);
+
   const onLoggedOut = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
@@ -136,8 +136,35 @@ export const MainView = () => {
                   movies.length === 0 ? (
                     <Col> The List is Empty!</Col>
                   ) : (
+                    console.log("Search", Search),
                     <>
-                      {movies.map((movie) => (
+                      <Row className="my-3">
+                        <form>
+                          <InputGroup>
+                            <Form.Control
+                              onChange={(e) => setSearch(e.target.value)}
+                              placeholder="Search Movie Titles"
+                              aria-label="Search Movie Titles"
+                            />
+                          </InputGroup>
+                        </form>
+                      </Row>
+                      {movies.filter((movie) =>
+                        movie.Title.toLowerCase().includes(Search.toLowerCase())).map((movie) => (
+                          <Col className="mb-4" key={movie._id} md={3}>
+                            <MovieCard
+                              movie={movie}
+                              token={token}
+                              user={user}
+                              setUser={setUser}
+                            />
+
+                          </Col>
+
+                        ))}
+
+
+                      {/* {movies.map((movie) => (
                         <Col className="mb-4" key={movie._id} md={3}>
                           <MovieCard
                             movie={movie}
@@ -145,7 +172,7 @@ export const MainView = () => {
                             user={user}
                             setUser={setUser} />
                         </Col>
-                      ))}
+                      ))} */}
                     </>
                   )
                 }
@@ -215,6 +242,7 @@ export const MainView = () => {
                     <Col> The List is Empty!</Col>
                   ) : (
                     <>
+
                       {movies.filter((movie) => user.FavoriteMovies.includes(movie._id)).map((movie) => (
                         <Col className="mb-4" key={movie._id} md={3}>
                           <MovieCard
@@ -231,14 +259,6 @@ export const MainView = () => {
             }
 
           />
-
-
-
-
-
-
-
-
 
 
           <Route
