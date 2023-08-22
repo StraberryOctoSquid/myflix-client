@@ -31,4 +31,35 @@
 
 
 
+const dateFields = [1970, 0, 1]; // 1 Jan 1970
+const d = new Date(...dateFields);
+console.log("d:", d);
+console.log("dateFields:", dateFields);
+console.log("Date:", Date);
+
+const names = [Joe, John, Tom];
+const n = new Name(...names);
+console.log("n:", n);
+console.log("names:", names);
+
+// const parts = ["shoulders", "knees"];
+// const lyrics = ["head", ...parts, "and", "toes"];
+// console.log(lyrics);
+
+
+
+
+// const a = [[1], [2], [3]];
+// const b = [...a];
+
+// b.shift().shift();
+// // 1
+
+// // Oh no! Now array 'a' is affected as well:
+// console.log(a);
+// // [[], [2], [3]]
+
+
+
+
 
