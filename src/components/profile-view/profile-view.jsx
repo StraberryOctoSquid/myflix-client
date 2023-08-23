@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
-import { Col, Row, Container, Nav } from "react-bootstrap";
+import { Col, Container, Nav } from "react-bootstrap";
 import { Button, Card } from "react-bootstrap";
 import "./profile-view.scss";
-import { UpdateUser } from "./update-user";
 
 export const ProfileView = ({ user, token, movies, setUser, onLoggedOut }) => {
   console.log("token", token);
