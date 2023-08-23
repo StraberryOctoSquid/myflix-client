@@ -16,7 +16,6 @@ export const MainView = () => {
   const [Search, setSearch] = useState("");
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken);
-  console.log("user", user);
 
   const onLoggedOut = () => {
     localStorage.removeItem("user");
@@ -134,7 +133,6 @@ export const MainView = () => {
                   movies.length === 0 ? (
                     <Col> The List is Empty!</Col>
                   ) : (
-                    console.log("Search", Search),
                     <>
                       <Row className="my-3">
                         <form>
