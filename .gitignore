@@ -1,6 +1,5 @@
 node_modules
 .cache
 .parcel-cache
-notes.md
 dist/
 fun.js
