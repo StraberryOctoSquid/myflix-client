@@ -96,14 +96,12 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  // <Col md={5}>
                   <LoginView
                     onLoggedIn={(user, token) => {
                       setUser(user);
                       setToken(token);
                     }}
                   />
-                  // </Col>
                 )}
               </>
             }
@@ -149,30 +147,28 @@ export const MainView = () => {
                           </InputGroup>
                         </form>
                       </Row>
-                      {movies.filter((movie) =>
-                        movie.Title.toLowerCase().includes(Search.toLowerCase())).map((movie) => (
-                          <Col className="mb-4" key={movie._id} md={3}>
-                            <MovieCard
-                              movie={movie}
-                              token={token}
-                              user={user}
-                              setUser={setUser}
-                            />
+                      {movies.filter((movie) => {
+                        return Search === "" ?
+                          movie :
+                          movie.Title.toLowerCase().includes(Search.toLowerCase());
+                      }
 
-                          </Col>
+                      ).map((movie) => (
 
-                        ))}
-
-
-                      {/* {movies.map((movie) => (
                         <Col className="mb-4" key={movie._id} md={3}>
                           <MovieCard
                             movie={movie}
                             token={token}
                             user={user}
-                            setUser={setUser} />
+                            setUser={setUser}
+                          />
+
                         </Col>
-                      ))} */}
+
+                      ))}
+
+
+
                     </>
                   )
                 }
