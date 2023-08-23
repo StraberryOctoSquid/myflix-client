@@ -61,7 +61,6 @@ export const MainView = () => {
 
   }, [token]);
 
-  // ?If no user load loginview or signupview?
   return (
     <BrowserRouter>
       <NavigationBar
@@ -69,7 +68,6 @@ export const MainView = () => {
         onLoggedOut={onLoggedOut}
       />
       <Row
-        // style={{ border: "1px solid black" }}
         className="justify-content-md-center">
         <Routes>
 

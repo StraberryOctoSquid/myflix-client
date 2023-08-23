@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Form, Button, Card, CardGroup, Container, Col, Row } from "react-bootstrap";
-import { LoginView } from "../login-view/login-view";
 
 
 export const SignupView = () => {
@@ -41,7 +40,7 @@ export const SignupView = () => {
         <Col>
           <CardGroup>
             <Card className="signup-card">
-              <Card.Title className="login-title">Create a New Account</Card.Title>
+              <Card.Title className="login-title"><h1>Welcome to myFlix</h1><h3>Create a New Account</h3> </Card.Title>
               <Card.Body>
 
 
