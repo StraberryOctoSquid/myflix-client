@@ -22,7 +22,6 @@ export const LoginView = ({ onLoggedIn }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Login response: ", data);
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
@@ -52,7 +51,7 @@ export const LoginView = ({ onLoggedIn }) => {
 
                 <Form onSubmit={handleSubmit}>
 
-                  <Form.Group className="mb-3" controlId="formBasicUsername">
+                  <Form.Group className="mb-2" controlId="formBasicUsername">
                     {/* <Form.Label>Username:</Form.Label> */}
                     <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} required minLength="3" />
                     {/* <Form.Text className="text-muted">
@@ -60,7 +59,7 @@ export const LoginView = ({ onLoggedIn }) => {
                   </Form.Text> */}
                   </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Group className="mb-2" controlId="formBasicPassword">
                     {/* <Form.Label>Password:</Form.Label> */}
                     <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength="3" />
                   </Form.Group>

@@ -29,7 +29,6 @@ export
             return res.json();
           }
         }).then((data) => {
-          console.log("Data:", data);
           setIsFavorite(false);
           localStorage.setItem("user", JSON.stringify(data));
           setUser(data);

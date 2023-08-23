@@ -37,10 +37,10 @@ console.log("d:", d);
 console.log("dateFields:", dateFields);
 console.log("Date:", Date);
 
-const names = [Joe, John, Tom];
-const n = new Name(...names);
-console.log("n:", n);
-console.log("names:", names);
+// const names = [Joe, John, Tom];
+// const n = new Name(...names);
+// console.log("n:", n);
+// console.log("names:", names);
 
 // const parts = ["shoulders", "knees"];
 // const lyrics = ["head", ...parts, "and", "toes"];

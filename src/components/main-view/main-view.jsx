@@ -4,7 +4,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { Col, Row } from "react-bootstrap";
+import { Col, InputGroup, Row, Form } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ProfileView } from "../profile-view/profile-view";
 import { UpdateUser } from "../profile-view/update-user";
@@ -13,11 +13,10 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-
-  // What does this do?
+  const [Search, setSearch] = useState("");
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken);
-  console.log("user", user);
+
   const onLoggedOut = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
@@ -62,7 +61,6 @@ export const MainView = () => {
 
   }, [token]);
 
-  // ?If no user load loginview or signupview?
   return (
     <BrowserRouter>
       <NavigationBar
@@ -70,7 +68,6 @@ export const MainView = () => {
         onLoggedOut={onLoggedOut}
       />
       <Row
-        // style={{ border: "1px solid black" }}
         className="justify-content-md-center">
         <Routes>
 
@@ -96,14 +93,12 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  // <Col md={5}>
                   <LoginView
                     onLoggedIn={(user, token) => {
                       setUser(user);
                       setToken(token);
                     }}
                   />
-                  // </Col>
                 )}
               </>
             }
@@ -137,15 +132,39 @@ export const MainView = () => {
                     <Col> The List is Empty!</Col>
                   ) : (
                     <>
-                      {movies.map((movie) => (
+                      <Row className="my-3">
+                        <form>
+                          <InputGroup>
+                            <Form.Control
+                              onChange={(e) => setSearch(e.target.value)}
+                              placeholder="Search Movie Titles"
+                              aria-label="Search Movie Titles"
+                            />
+                          </InputGroup>
+                        </form>
+                      </Row>
+                      {movies.filter((movie) => {
+                        return Search === "" ?
+                          movie :
+                          movie.Title.toLowerCase().includes(Search.toLowerCase());
+                      }
+
+                      ).map((movie) => (
+
                         <Col className="mb-4" key={movie._id} md={3}>
                           <MovieCard
                             movie={movie}
                             token={token}
                             user={user}
-                            setUser={setUser} />
+                            setUser={setUser}
+                          />
+
                         </Col>
+
                       ))}
+
+
+
                     </>
                   )
                 }
@@ -215,6 +234,7 @@ export const MainView = () => {
                     <Col> The List is Empty!</Col>
                   ) : (
                     <>
+
                       {movies.filter((movie) => user.FavoriteMovies.includes(movie._id)).map((movie) => (
                         <Col className="mb-4" key={movie._id} md={3}>
                           <MovieCard
@@ -231,14 +251,6 @@ export const MainView = () => {
             }
 
           />
-
-
-
-
-
-
-
-
 
 
           <Route
