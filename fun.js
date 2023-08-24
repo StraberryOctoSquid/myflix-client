@@ -60,6 +60,8 @@ console.log("Date:", Date);
 // // [[], [2], [3]]
 
 
+// Start Parcel
+// parcel src\index.html
 
 
 
