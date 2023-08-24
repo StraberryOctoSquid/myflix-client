@@ -8,7 +8,6 @@ export const addFavorite = (movie, token, user, setUser, setIsFavorite) => {
   })
     .then((res) => {
       if (res.ok) {
-        console.log("added to favorite");
         return res.json();
       }
     }).then((data) => {

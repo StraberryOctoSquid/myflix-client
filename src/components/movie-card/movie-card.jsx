@@ -25,7 +25,6 @@ export
       })
         .then((res) => {
           if (res.ok) {
-            console.log("removed from favorite");
             return res.json();
           }
         }).then((data) => {

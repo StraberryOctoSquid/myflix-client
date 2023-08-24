@@ -40,7 +40,6 @@ export const UpdateUser = ({ user, token, setUser }) => {
         }
       })
       .then((data) => {
-        console.log(data);
         localStorage.setItem('user', JSON.stringify(data));
         setUser(data);
         window.location.replace('/profile');
