@@ -24,3 +24,10 @@ The page that is first navigated to is a log in page. This is fine if you have a
 ### Solution:
 At minimum a small sign up link could be placed below the sign in button on the log in page.
 Movie cards could be added to the background of login and sign up views.
+
+### Problem UX mobile
+Overall the app looks and works fairly well. There a couple of visual and functional improvements that I'd like to spend more time on.
+
+- The search function opperates smoothly on a desktop but, on a mobile device the keyboard covers up the results.
+
+- 
